@@ -1,11 +1,12 @@
 import React from 'react'
 
-export default class About extends React.Component {
-    render() {
-        return (
-            <div>
-                
-            </div>
-        )
-    }
+function About() {
+    return (
+        <div>
+            
+        </div>
+    )
 }
+
+export default About
+
