@@ -10,11 +10,6 @@ This is a quick guide of how to start a `react` app using `Material-UI` which is
       cd youtube-enhanced/
       git init
       ```
-  - Install dependency [Material-UI](https://material-ui.com/getting-started/installation/)
-  -   ```bash
-      npm install @material-ui/core
-      npm install @material-ui/icons
-      ```
   - Install imagemagick for MacBook - Big Sur 
   -  ```bash
      brew install imagemagick
@@ -46,7 +41,24 @@ This is a quick guide of how to start a `react` app using `Material-UI` which is
         ```
       - On Github, create a new repository
    
+  - Install dependency [Material-UI](https://material-ui.com/getting-started/installation/)
+      -  ```bash
+         npm i @material-ui/core
+         npm i @material-ui/icons
+         ```
    - Install `react-router-dom`
       -  ```bash
-         npm install --save react-router-dom
+         npm i --save react-router-dom
+         ```
+   - Install `youtube-react`
+      -  ```bash
+         npm i react-youtube
+         ```
+   - Install `moment`
+      -  ```bash
+         npm i --save moment react-moment
+         ```
+   - Install `uuidv4`
+      -  ```bash
+         npm i --save uuid
          ```
