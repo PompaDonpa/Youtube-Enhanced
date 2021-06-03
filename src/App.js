@@ -28,9 +28,9 @@ class App extends React.Component {
           
           <Switch>
             <Route exact path='/'>
-              <Rigth />
+              <Rigth />{Home}
             </Route>
-            <Route path='/home'>{Home}</Route>
+            {/* <Route path='/home'>{Home}</Route> */}
             <Route path='/about'>{About}</Route>
             <Route path='/video'>{Video}</Route>
             <Route>{() => <h1>404: Page not found</h1>}</Route>

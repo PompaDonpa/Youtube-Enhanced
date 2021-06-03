@@ -1,4 +1,5 @@
-import React from 'react'
+import React, { useState } from 'react'
+import axios from 'axios'
 import './NavBar.css'
 
 import { fade, makeStyles, withStyles } from '@material-ui/core/styles'
@@ -119,10 +120,10 @@ const useStyles = makeStyles(theme => ({
   }
 }))
 
-function NavBar () {
+const NavBar = () => {
   const classes = useStyles()
-  const [auth, setAuth] = React.useState(true)
-  const [anchorEl, setAnchorEl] = React.useState(null)
+  const [auth, setAuth] = useState(true)
+  const [anchorEl, setAnchorEl] = useState(null)
   const open = Boolean(anchorEl)
 
   const handleChange = event => {
@@ -137,7 +138,41 @@ function NavBar () {
     setAnchorEl(null)
   }
 
+  const [ search, setSearch ] = useState('')
+  const [ currentSearch, setCurrentSearch ] = useState('')
+  const [ searchResult, setSearchResult ] = useState({})
+  const [ videosDetails, setVideosDetails ] = useState([])
+  const [ isSearch, setIsSearch ] = useState(false)
+
+  const handleUserInput = (e) => {
+    let search = e.target.value
+    console.log(search)
+    setSearch(search)
+  }
+  
+  const submitUserSearch = async (e) => {
+    e.preventDefault();
+    console.log('search hit')
+    let searchInput = search.trim();
+    if (!searchInput) return;
+    let { data: searchResult } = await axios.get(`https://youtube.googleapis.com/youtube/v3/search?part=snippet&maxResults=25&q=${searchInput}&type=video&key=${process.env.REACT_APP_API_KEY}`);
+    let videosIds = searchResult.items.map(video => video.id.videoId).join(",");
+    let { data: { items: videosDetails } } = await axios.get(`https://www.googleapis.com/youtube/v3/videos?id=${videosIds}&part=snippet,contentDetails,statistics&key=${process.env.REACT_APP_API_KEY}`);
+    console.log(searchInput)
+    console.log(searchResult)
+    console.log(videosDetails)
+    
+    setSearch('');
+    setCurrentSearch(searchInput);
+    setSearchResult(searchResult);
+    setVideosDetails(videosDetails);
+    setIsSearch(true);
+    console.log(isSearch)
+   
+}
+
   return (
+   
     <div className={classes.root}>
       <AppBar position='static'>
         <Toolbar className={classes.toolbar}>
@@ -192,8 +227,15 @@ function NavBar () {
                   input: classes.inputInput
                 }}
                 inputProps={{ 'aria-label': 'search' }}
+                value={search}
+                onChange={handleUserInput}
+                onKeyPress={(e) => e.key === 'Enter' && submitUserSearch(e)}
+                
               />
-              <Button className={classes.submitButton}>Submit</Button>
+              <Button 
+                    className={classes.submitButton}
+                    onClick={submitUserSearch}
+                    >Submit</Button>
             </div>
           </div>
 

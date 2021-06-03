@@ -79,7 +79,7 @@ const useStyles = makeStyles(theme => ({
   }
 }))
 
-function Left () {
+const Left = () => {
   const classes = useStyles()
   const [auth, setAuth] = React.useState(false)
   const [anchorEl, setAnchorEl] = React.useState(null)
@@ -101,7 +101,7 @@ function Left () {
     <div className={classes.root}>
       <AppBar position='static'>
         <Toolbar className={classes.leftBar}>
-          <Button component={Link} to='/home'>
+          <Button component={Link} to='/'>
             <HomeIcon style={{ color: '#add7ff', fontSize: 34 }} />
             {/* "#62d6e8"   */}
           </Button>

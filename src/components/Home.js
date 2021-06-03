@@ -5,7 +5,7 @@ import moment from "moment";
 import "moment-duration-format";
 import { v4 as uuid } from 'uuid'
 
-export default class Home extends Component {
+class Home extends Component {
     constructor() {
         super();
         this.state = {
@@ -104,3 +104,4 @@ export default class Home extends Component {
         )
     }
 }
+export default Home

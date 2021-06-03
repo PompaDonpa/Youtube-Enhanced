@@ -57,6 +57,7 @@ This is a quick guide of how to start a `react` app using `Material-UI` which is
    - Install `moment`
       -  ```bash
          npm i --save moment react-moment
+         npm install moment-duration-format
          ```
    - Install `uuidv4`
       -  ```bash
