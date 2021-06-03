@@ -9,28 +9,29 @@ import Rigth from './components/Rigth'
 import './App.css'
 
 class App extends React.Component {
-  render() {
+  render () {
     return (
       <>
-      <header className = 'header'>
+        <header className='header'>
           <NavBar />
-      </header>
-      <div className = 'left-sidebar'>
-        <Left />
-      </div>
-      <main className = 'main'>
-          <div className = 'backgg'>
+        </header>
+        <div className='left-sidebar'>
+          <Left />
+        </div>
+        <main className='main'>
+          <div className='backgg'>
             <Rigth />
           </div>
-            <Switch>
-                <Route exact path = '/'>Welcome to Youtube - Enhanced</Route>
-                <Route path = '/home'>{Home}</Route>
-                <Route path = '/about'>{About}</Route>
-                <Route path = '/video'>{Video}</Route>
-                <Route>{()=><h1>404: Page not found</h1>}</Route>
-            </Switch>
-
-          </main>
+          <Switch>
+            <Route exact path='/'>
+              <Rigth />
+            </Route>
+            <Route path='/home'>{Home}</Route>
+            <Route path='/about'>{About}</Route>
+            <Route path='/video'>{Video}</Route>
+            <Route>{() => <h1>404: Page not found</h1>}</Route>
+          </Switch>
+        </main>
       </>
     )
   }

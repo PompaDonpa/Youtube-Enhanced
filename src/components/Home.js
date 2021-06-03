@@ -8,18 +8,19 @@ const handleInputChange = e => {}
 const Home = () => {
   return (
     <div>
-      <form  noValidate autoComplete='off'>
-
-        <TextField   id="standard-full-width"
-          label="Label"
+      <form noValidate autoComplete='off'>
+        <TextField
+          id='standard-full-width'
+          label='Label'
           style={{ margin: 8 }}
-          placeholder="Placeholder"
-          helperText="Full width!"
+          placeholder='Placeholder'
+          helperText='Full width!'
           fullWidth
-          margin="normal"
+          margin='normal'
           InputLabelProps={{
-            shrink: true,
-          }} />
+            shrink: true
+          }}
+        />
       </form>
     </div>
   )
