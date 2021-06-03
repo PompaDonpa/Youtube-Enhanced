@@ -3,23 +3,35 @@ import { Route, Switch } from 'react-router-dom'
 import NavBar from './components/NavBar'
 import Home from './components/Home'
 import About from './components/About'
-
+import Video from './components/Video'
+import Left from './components/Left'
+import Rigth from './components/Rigth'
+import './App.css'
 
 class App extends React.Component {
   render() {
     return (
-      <div className = 'header'>
+      <>
+      <header className = 'header'>
           <NavBar />
-          <main>
+      </header>
+      <div className = 'left-sidebar'>
+        <Left />
+      </div>
+      <main className = 'main'>
+          <div className = 'backgg'>
+            <Rigth />
+          </div>
             <Switch>
                 <Route exact path = '/'>Welcome to Youtube - Enhanced</Route>
                 <Route path = '/home'>{Home}</Route>
                 <Route path = '/about'>{About}</Route>
+                <Route path = '/video'>{Video}</Route>
                 <Route>{()=><h1>404: Page not found</h1>}</Route>
             </Switch>
 
           </main>
-      </div>
+      </>
     )
   }
 }

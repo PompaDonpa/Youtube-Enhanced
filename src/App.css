@@ -1,7 +1,31 @@
-.header{
-  background-color: red;
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: space-evenly;
+@import url('https://fonts.googleapis.com/css2?family=Fira+Sans:ital,wght@1,300&display=swap');
+
+
+body {
+  font-family: 'Fira Sans', sans-serif;
+  background-color: "#282936";
 }
+
+.backgg {
+  background-color: "#282936";
+}
+
+#root {
+  display: grid;
+  grid-template: auto 1fr auto / auto 1fr;
+
+}
+
+.left-sidebar { 
+  grid-column: 1 / 2;
+}
+
+.main{ 
+  display: grid;
+  grid-template-rows: auto 1fr;
+}
+
+.uprigth-sidebar { 
+  grid-column: 1 / 2 ;
+}
+
