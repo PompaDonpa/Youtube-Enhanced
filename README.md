@@ -62,3 +62,16 @@ This is a quick guide of how to start a `react` app using `Material-UI` which is
       -  ```bash
          npm i --save uuid
          ```
+   - Install `axios`
+      -  ```bash
+         npm i axios
+         ```
+   - Install `local-ip-url`
+      -  ```bash
+         npm install local-ip-url --save-dev
+         ```
+         ```react
+         const localIpUrl = require('local-ip-url')
+         localIpUrl() // => 192.168.31.69
+         localIpUrl('public', 'ipv6') // => fe80::c434:2eff:fe06:f90
+         ```

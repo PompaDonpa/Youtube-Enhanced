@@ -56,11 +56,11 @@ const useStyles = makeStyles(theme => ({
       margin: theme.spacing(0)
     }
   },
-  egg: {
-    width: '24px',
-    height: '24px',
-    transform: 'translateY(-1px)'
-  },
+  // egg: {
+  //   width: '24px',
+  //   height: '24px',
+  //   transform: 'translateY(-1px)'
+  // },
   toolbar: {
     justifyContent: 'space-between',
     backgroundColor: ({ green }) => (green ? '#5de4c7' : '#282936')
@@ -212,15 +212,24 @@ function NavBar () {
 
           {/* {auth && ( */}
           <div>
-            <GitHubIcon
+          <StyledBadge
+            overlap='circle'
+            anchorOrigin={{
+              vertical: 'bottom',
+              horizontal: 'right'
+            }}
+            variant='dot'
+          >
+            <Avatar
               aria-label='account of current user'
               aria-controls='menu-appbar'
               aria-haspopup='true'
               onClick={handleMenu}
               color='inherit'
-            >
-              <AccountCircle />
-            </GitHubIcon>
+              style={{ color: '#83e8ff', fontSize: 24, backgroundColor: 'rgba(175, 182, 213, 0.31)' }}
+            >🧛🏻‍♂️
+            </Avatar>
+            </StyledBadge>
             <Menu
               id='menu-appbar'
               anchorEl={anchorEl}
@@ -241,7 +250,7 @@ function NavBar () {
             </Menu>
           </div>
           {/* )} */}
-          <StyledBadge
+          {/* <StyledBadge
             overlap='circle'
             anchorOrigin={{
               vertical: 'bottom',
@@ -254,7 +263,7 @@ function NavBar () {
               src='https://api.iconify.design/logos:egghead.svg'
               className={classes.egg}
             />
-          </StyledBadge>
+          </StyledBadge> */}
         </Toolbar>
       </AppBar>
     </div>

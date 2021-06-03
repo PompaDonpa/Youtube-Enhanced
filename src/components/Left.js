@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 
 import { makeStyles, withStyles } from '@material-ui/core/styles'
 import AppBar from '@material-ui/core/AppBar'
@@ -69,11 +70,6 @@ const useStyles = makeStyles(theme => ({
     display: 'flex',
     flexDirection: 'column'
   },
-
-  dark: {
-    color: theme.palette.getContrastText('#FFFF'),
-    backgroundColor: 'black'
-  },
   title: {
     flexGrow: 1,
     display: 'none',
@@ -105,7 +101,7 @@ function Left () {
     <div className={classes.root}>
       <AppBar position='static'>
         <Toolbar className={classes.leftBar}>
-          <Button>
+          <Button component={Link} to='/home'>
             <HomeIcon style={{ color: '#add7ff', fontSize: 34 }} />
             {/* "#62d6e8"   */}
           </Button>
@@ -164,22 +160,9 @@ function Left () {
           </div>
 
           <div className={classes.pd}>
-            <Chip
-              avatar={
-                <Avatar
-                  style={{ color: '#83e8ff', fontSize: 18 }}
-                  className={classes.dark}
-                >
-                  ⅌
-                </Avatar>
-              }
-              label='🐉'
-              onClick={() => {
-                window.alert('@PompaDonpa')
-              }}
-              variant='outlined'
-              style={{ color: '#83e8ff', fontSize: 21 }}
-            />
+            <Avatar style={{ color: '#001353', fontSize: 24, backgroundColor: '#6c71c4' }} onClick={() => {window.alert('@PompaDonpa')}} >
+              ⅌
+            </Avatar>
           </div>
         </Toolbar>
       </AppBar>

@@ -6,6 +6,7 @@ import About from './components/About'
 import Video from './components/Video'
 import Left from './components/Left'
 import Rigth from './components/Rigth'
+import Console from './components/Console.js'
 import './App.css'
 
 class App extends React.Component {
@@ -22,6 +23,9 @@ class App extends React.Component {
           <div className='backgg'>
             <Rigth />
           </div>
+          
+            <Rigth />
+          
           <Switch>
             <Route exact path='/'>
               <Rigth />
@@ -31,6 +35,7 @@ class App extends React.Component {
             <Route path='/video'>{Video}</Route>
             <Route>{() => <h1>404: Page not found</h1>}</Route>
           </Switch>
+          <div><Console /></div>
         </main>
       </>
     )
