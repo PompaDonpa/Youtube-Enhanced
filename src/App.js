@@ -1,20 +1,25 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { Route, Switch } from 'react-router-dom'
 import NavBar from './components/NavBar'
 import Home from './components/Home'
 import About from './components/About'
-import Video from './components/Video'
+import Videos from './components/Videos'
 import Left from './components/Left'
 import Rigth from './components/Rigth'
 import Console from './components/Console.js'
 import './App.css'
 
-class App extends React.Component {
-  render () {
+const App = () => {
+    const [ info, setInfo ] = useState({})
+    const loadInfo = (info) =>{
+       setInfo(info)
+    } 
+    console.log('APP')
+    console.log(info)
     return (
       <>
         <header className='header'>
-          <NavBar />
+          <NavBar loadInfo={loadInfo}/>
         </header>
         <div className='left-sidebar'>
           <Left />
@@ -28,11 +33,12 @@ class App extends React.Component {
           
           <Switch>
             <Route exact path='/'>
-              <Rigth />{Home}
+              <Rigth />
+              <Home info = {info}/>
             </Route>
             {/* <Route path='/home'>{Home}</Route> */}
             <Route path='/about'>{About}</Route>
-            <Route path='/video'>{Video}</Route>
+            <Route path='/videos'>{Videos}</Route>
             <Route>{() => <h1>404: Page not found</h1>}</Route>
           </Switch>
           <div><Console /></div>
@@ -40,5 +46,4 @@ class App extends React.Component {
       </>
     )
   }
-}
 export default App

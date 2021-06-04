@@ -7,8 +7,10 @@ const useStyles = makeStyles((theme) => ({
   root: {
     ...theme.typography.span,
     backgroundColor: ({ green }) => (green ? '#5de4c7' : '#a5e12d'),
-
     padding: theme.spacing(0),
+    display: 'flex',
+    flexDirection: 'row',
+    justifyContent: 'space-evenly'
   },
 }));
 
@@ -32,6 +34,14 @@ function Console() {
   },[])
 
 
-  return <div className={classes.root}>&emsp;[&emsp;Transilvania&emsp;]&emsp;&emsp;&emsp;&emsp;{local}&emsp;:&emsp;Youtube Enhanced&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;" MacBook Pro"&emsp;&emsp;&emsp;&emsp;{date}</div>;
+  return (
+          <div className={classes.root}>
+              <span>[&emsp;Transylvania&emsp;]</span>
+              <span>{local}</span>
+              <span>Youtube Enhanced</span>
+              <span>" MacBook Pro"</span>
+              <span>{date}</span>  
+          </div>
+  )
 }
 export default Console

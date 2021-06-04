@@ -120,7 +120,8 @@ const useStyles = makeStyles(theme => ({
   }
 }))
 
-const NavBar = () => {
+const NavBar = ({loadInfo}) => {
+  console.log( {loadInfo})
   const classes = useStyles()
   const [auth, setAuth] = useState(true)
   const [anchorEl, setAnchorEl] = useState(null)
@@ -129,21 +130,17 @@ const NavBar = () => {
   const handleChange = event => {
     setAuth(event.target.checked)
   }
-
   const handleMenu = event => {
     setAnchorEl(event.currentTarget)
   }
-
   const handleClose = () => {
     setAnchorEl(null)
   }
 
-  const [ search, setSearch ] = useState('')
-  const [ currentSearch, setCurrentSearch ] = useState('')
-  const [ searchResult, setSearchResult ] = useState({})
-  const [ videosDetails, setVideosDetails ] = useState([])
-  const [ isSearch, setIsSearch ] = useState(false)
 
+  const [ search, setSearch ] = useState('')
+  const [ info, setInfo] = useState({})
+  const [ sendinfo, setSendInfo ] = useState(info)
   const handleUserInput = (e) => {
     let search = e.target.value
     console.log(search)
@@ -162,12 +159,13 @@ const NavBar = () => {
     console.log(searchResult)
     console.log(videosDetails)
     
+    
     setSearch('');
-    setCurrentSearch(searchInput);
-    setSearchResult(searchResult);
-    setVideosDetails(videosDetails);
-    setIsSearch(true);
-    console.log(isSearch)
+    let info = { searchResult, videosDetails, isSearch: true}
+    setInfo(info)
+    loadInfo(info)
+
+    
    
 }
 
