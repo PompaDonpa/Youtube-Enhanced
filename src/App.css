@@ -2,7 +2,8 @@
 
 body {
   font-family: "Fira Sans", sans-serif;
-  background-color: "#282936";
+  background-color: rgba(15, 0, 33, 0.959);
+  height: 90vh;
 }
 
 .backgg {
@@ -20,9 +21,39 @@ body {
 
 .main {
   display: grid;
-  grid-template-rows: auto 1fr auto;
+  grid-template-rows: 1fr auto;
 }
 
 .uprigth-sidebar {
   grid-column: 1 / 2;
+}
+
+#outerDiv {
+  grid-area: 1 / 1 / 2 / 2;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  height: 86.2vh;
+  margin: 0em;
+  overflow-y: auto;
+  background: rgb(28, 27, 27);
+}
+#content {
+  height: auto;
+  display: grid;
+  grid-gap: 5rem;
+  grid-template-columns: 1fr 1fr;
+}
+
+#card {
+  display: flex;
+  flex-direction: column;
+  padding: 1rem;
+  justify-content: space-between;
+}
+
+.videosList {
+  list-style: none;
+  margin: 0px;
+  padding: 1px;
 }
