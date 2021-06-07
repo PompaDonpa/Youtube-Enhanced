@@ -134,24 +134,24 @@
 
 *   #### `Search`
     <div align="center">
-    <img src="./captures/search.gif" alt="cap-search" width="440px" height="320px" />
-    <img src="./captures/scroll-video.gif" alt="cap-scroll" width="440px" height="320px" />
+    <img src="./captures/search.gif" alt="cap-search" width="480px" height="340px" />
+    <img src="./captures/scroll-video.gif" alt="cap-scroll" width="480px" height="340px" />
     </div>
     <br />
     <div align="center">
-    <img src="./captures/video-details.gif" alt="cap-details" width="440px" height="320px" />
-    <img src="./captures/fair-use.gif" alt="cap-fair" width="440px" height="320px" />
+    <img src="./captures/video-details.gif" alt="cap-details" width="480px" height="340px" />
+    <img src="./captures/fair-use.gif" alt="cap-fair" width="480px" height="340px" />
     </div>
     
 *   #### `Theme Inspiration`
     <div align="center">
-    <img src="./captures/dracula-home.gif" alt="cap-dracula" width="440px" height="320px" />
-    <img src="./captures/dracula-pallete.gif" alt="cap-pallete" width="440px" height="320px" />
+    <img src="./captures/dracula-home.gif" alt="cap-dracula" width="480px" height="340px" />
+    <img src="./captures/dracula-pallete.gif" alt="cap-pallete" width="480px" height="340px" />
     </div>
     <br />
     <div align="center">
-    <img src="./captures/tmux.gif" alt="cap-tmux" width="440px" height="320px" />
-    <img src="./captures/yte-code.gif" alt="cap-code" width="440px" height="320px" />
+    <img src="./captures/tmux.gif" alt="cap-tmux" width="480px" height="340px" />
+    <img src="./captures/yte-code.gif" alt="cap-code" width="480px" height="340px" />
     </div>
     
 <hr />
