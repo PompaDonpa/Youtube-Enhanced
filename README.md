@@ -21,7 +21,7 @@ This is a quick guide of how to start a `react` app using `Material-UI` open-sou
          
       brew install ghostscript
    ````
-  - Add the Font link to the html page ./public
+  - Add the Font link to the html page at `'./public'`
     ```javascript
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" />
     ```
@@ -38,17 +38,17 @@ This is a quick guide of how to start a `react` app using `Material-UI` open-sou
    - Push the Changes from terminal to GitHub
       - Add & commit locally
         ```bash
-           git add
-           echo >> "/node_modules" .gitnignore
-           git commit -m "First commit"
+        (echo "/node_modules" ; echo ".DS_Store" ; echo ".env\n.env.local\n.env.development.local\n.env.test.local\n.env.production.local" ) >> .gitnignore
+        git add .
+        git commit -m "First commit"
         ```
-      - On Github, create a new repository, & add upstream
+      - On Github, create a new repository, & add upstream locally
          ```bash
-            git checkout main
-            git remote -v
-            git remote add upstream 'insert repo'
-            git remote -v
-            git pull upstream main
+         git checkout main
+         git remote -v
+         git remote add upstream 'insert repo'
+         git remote -v
+         git pull upstream main
          ```
    <br />
 
@@ -68,7 +68,7 @@ This is a quick guide of how to start a `react` app using `Material-UI` open-sou
    - Install `moment`
       ```bash
          npm i --save moment react-moment
-         npm install moment-duration-format
+         npm i moment-duration-format
       ```
    - Install `uuidv4`
       ```bash
@@ -80,7 +80,7 @@ This is a quick guide of how to start a `react` app using `Material-UI` open-sou
       ```
    - Install `local-ip-url`
       ```bash
-         npm install local-ip-url --save-dev
+         npm i local-ip-url --save-dev
       ```
       ```javascript
          const localIpUrl = require('local-ip-url')
