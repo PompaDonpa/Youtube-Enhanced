@@ -132,7 +132,28 @@
 ## <a id="youtube-dracula">Youtube Dracula</a>
 <br />
 
-
+*   #### `Search`
+    <div align="center">
+    <img src="./captures/search.gif" alt="cap-search" width="400px" height="280px" />&emsp;
+    <img src="./captures/scroll-video.gif" alt="cap-scroll" width="400px" height="280px" />
+    </div>
+    <br />
+    <div align="center">
+    <img src="./captures/video-details.gif" alt="cap-details" width="400px" height="280px" />&emsp;
+    <img src="./captures/fair-use.gif" alt="cap-fair" width="400px" height="280px" />
+    </div>
+    
+*   #### `Theme Inspiration`
+    <div align="center">
+    <img src="./captures/dracula-home.gif" alt="cap-dracula" width="400px" height="280px" />&emsp;
+    <img src="./captures/dracula-pallete.gif" alt="cap-pallete" width="400px" height="280px" />
+    </div>
+    <br />
+    <div align="center">
+    <img src="./captures/tmux.gif" alt="cap-tmux" width="400px" height="280px" />&emsp;
+    <img src="./captures/yte-code.gif" alt="cap-code" width="400px" height="280px" />
+    </div>
+    
 <hr />
 
 ### <a id="case">Case Study - Youtube Enhanced on MacOs</a>
