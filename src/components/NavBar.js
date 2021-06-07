@@ -9,8 +9,6 @@ import Button from '@material-ui/core/Button'
 import IconButton from '@material-ui/core/IconButton'
 import InputBase from '@material-ui/core/InputBase'
 import SearchIcon from '@material-ui/icons/Search'
-import MenuIcon from '@material-ui/icons/Menu'
-// import AccountCircle from '@material-ui/icons/AccountCircle'
 import Switch from '@material-ui/core/Switch'
 import FormControlLabel from '@material-ui/core/FormControlLabel'
 import FormGroup from '@material-ui/core/FormGroup'
@@ -18,22 +16,33 @@ import MenuItem from '@material-ui/core/MenuItem'
 import Menu from '@material-ui/core/Menu'
 import Badge from '@material-ui/core/Badge'
 import Avatar from '@material-ui/core/Avatar'
+import NewReleasesIcon from '@material-ui/icons/NewReleases';
+import Dialog from '@material-ui/core/Dialog';
+import DialogActions from '@material-ui/core/DialogActions';
+import DialogContent from '@material-ui/core/DialogContent';
+import DialogContentText from '@material-ui/core/DialogContentText';
+import DialogTitle from '@material-ui/core/DialogTitle';
+import Slide from '@material-ui/core/Slide';
+import Tooltip from '@material-ui/core/Tooltip';
 
+const Transition = React.forwardRef(function Transition(props, ref) {
+  return <Slide direction="up" ref={ref} {...props} />;
+});
 
 const StyledBadge = withStyles(theme => ({
   badge: {
-          backgroundColor: '#b45bcf', 
-          color: '#b45bcf', 
+          backgroundColor: '#f1fa8c', //'#b45bcf', 
+          color: '#f1fa8c', 
           boxShadow: `0 0 0 2px ${theme.palette.background.paper}`,
           '&::after': {
               position: 'absolute',
-              top: 0,
-              left: 0,
+              top: -2,
+              left: -2,
               width: '100%',
               height: '100%',
               borderRadius: '50%',
               animation: '$ripple 1.2s infinite ease-in-out',
-              border: '1px solid currentColor',
+              border: '2px solid currentColor',
               content: '""'
             }
           },
@@ -118,12 +127,22 @@ const useStyles = makeStyles(theme => ({
 }))
 
 
-const NavBar = ({loadInfo}) => {
+const NavBar = ({loadInfo, toggleButtons, areButtonsDisabled}) => {
   
   const [anchorEl, setAnchorEl] = useState(null)
   const [auth, setAuth] = useState(true)
   const open = Boolean(anchorEl)
   const classes = useStyles()
+
+  const [openDialog, setOpenDialog] = React.useState(false);
+
+  const handleOpenDialog = () => {
+    setOpenDialog(true);
+  };
+
+  const handleCloseDialog = () => {
+    setOpenDialog(false);
+  };
 
   const handleChange = event => {
     setAuth(event.target.checked)
@@ -155,10 +174,17 @@ const NavBar = ({loadInfo}) => {
     let { data: searchResult } = await axios.get(`https://youtube.googleapis.com/youtube/v3/search?part=snippet&maxResults=25&q=${searchInput}&type=video&key=${process.env.REACT_APP_API_KEY}`);
     let videosIds = searchResult.items.map(video => video.id.videoId).join(",");
     let { data: { items: videosDetails } } = await axios.get(`https://www.googleapis.com/youtube/v3/videos?id=${videosIds}&part=snippet,contentDetails,statistics&key=${process.env.REACT_APP_API_KEY}`);
-
-    let info = { searchResult, videosDetails, isSearch: true}
+    let currentSearch = search
+    let info = { currentSearch, searchResult, videosDetails, isSearch: true}
     setSearch('');
     setInfo(info)
+
+      if (areButtonsDisabled[5]==='restart'){
+          toggleButtons([false,true,true,false,'none','newSearch'])
+      }else{
+          toggleButtons([false,true,true,false,'none','none'])
+      }
+
     loadInfo(info)
   }
 
@@ -169,10 +195,42 @@ const NavBar = ({loadInfo}) => {
         <Toolbar className={classes.toolbar}>
 
           <IconButton edge='start' className={classes.menuButton} color='inherit' aria-label='menu'>
-              <MenuIcon />
-          </IconButton>
+              <NewReleasesIcon onClick={handleOpenDialog}/>
+              </IconButton>
+              <Dialog
+                open={openDialog}
+                TransitionComponent={Transition}
+                keepMounted
+                onClose={handleCloseDialog}
+                aria-labelledby="alert-dialog-slide-title"
+                aria-describedby="alert-dialog-slide-description"
+              >
+                <DialogTitle id="alert-dialog-slide-title">{"Fair use on YouTube"}</DialogTitle>
+                <DialogContent>
+                  <DialogContentText id="alert-dialog-slide-description">
+                  Fair use is a legal doctrine that says you can reuse copyright-protected material under 
+                  certain circumstances without getting permission from the copyright owner.
+                  <br /><br />
+                  <strong>Fair use guidelines</strong>
+                  <br /><br />
+                  Different countries have different rules about when it’s OK to use material without the 
+                  copyright owner’s permission. For example, in the United States, works of commentary, criticism, 
+                  research, teaching, or news reporting may be considered fair use. Some other countries have a similar 
+                  concept called fair dealing that may work differently.
+                  Courts look over potential fair use cases according to the facts of each specific case. 
+                  You’ll probably want to get legal advice from an expert before uploading videos that contain 
+                  copyright-protected material.
+                  </DialogContentText>
+                </DialogContent>
+                <DialogActions>
+                  <Button onClick={handleCloseDialog} color="primary">
+                    Agree
+                  </Button>
+                </DialogActions>
+              </Dialog>
+         
 
-          <Button>
+          <Button disabled>
             <svg width='9.5em' height='5em' viewBox='0 0 40 16'>
               <path
                 d='M5.375 2.647l.006-.028l.016-.118l-.74-.004c-.668-.004-.873 0-.891.017c-.009.008-.24.885-.651 2.473c-.196.758-.361 1.363-.367 1.345s-.24-.883-.522-1.922a107.288 107.288 0 0 0-.524-1.901c-.01-.01-.906-.014-1.632-.008c-.105.001-.164-.205.938 3.299c.152.485.381 1.172.507 1.526c.146.408.25.724.321.987c.126.501.13.815.103 1.182c-.032.423-.036 3.413-.005 3.463c.024.038 1.425.056 1.558.02c.021-.006.035-.026.045-.139c.033-.097.036-.484.036-2.09V8.698l.09-.283c.059-.185.206-.672.328-1.082l.327-1.09c.529-1.724 1.033-3.419 1.047-3.516l.011-.079z'
@@ -215,18 +273,20 @@ const NavBar = ({loadInfo}) => {
                       onChange={handleUserInput}
                       onKeyPress={(e) => e.key === 'Enter' && submitUserSearch(e)} />
 
-                  <Button className={classes.submitButton} nClick={submitUserSearch} >Submit</Button>
+                  <Button className={classes.submitButton} onClick={submitUserSearch} >Submit</Button>
               </div>
           </div>
-
+          <Tooltip title="Pumice theme to be implemented">
           <FormGroup>
             <FormControlLabel
                 control={<Switch checked={auth} onChange={handleChange} aria-label='login switch'/>}
                 label={auth ? 'Dracula' : 'Pumice'}
             />
           </FormGroup>
-
+          </Tooltip>
           <div>
+          <Tooltip title="Dracula info">
+            <Button>
             <StyledBadge overlap='circle' anchorOrigin={{vertical: 'bottom',horizontal: 'right'}} variant='dot'>
                   <Avatar
                         aria-label='account of current user'
@@ -237,6 +297,8 @@ const NavBar = ({loadInfo}) => {
                         style={{ color: '#83e8ff', fontSize: 30, backgroundColor: 'rgba(175, 182, 213, 0.31)' }}
                   >🧛🏻‍♂️</Avatar>
             </StyledBadge>
+            </Button>
+            </Tooltip>
             
             <Menu
                   id='menu-appbar'
@@ -248,7 +310,7 @@ const NavBar = ({loadInfo}) => {
                   keepMounted
                   transformOrigin={{
                     vertical: 'top',
-                    horizontal: 'right'
+                    horizontal: 'right',
                   }}
                   open={open}
                   onClose={handleClose}
@@ -257,7 +319,7 @@ const NavBar = ({loadInfo}) => {
               <MenuItem className = {classes.popMenu} onClick={()=> window.open('https://draculatheme.com/contribute', '_blank')}>Color Pallete</MenuItem>
             </Menu>
           </div>
-          
+
         </Toolbar>
       </AppBar>
     </div>

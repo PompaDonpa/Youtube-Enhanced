@@ -6,7 +6,7 @@ const localIpUrl = require('local-ip-url')
 const useStyles = makeStyles((theme) => ({
   root: {
     ...theme.typography.span,
-    backgroundColor: ({ green }) => (green ? '#5de4c7' : '#a5e12d'),
+    backgroundColor: '#a5e12d',
     padding: theme.spacing(0),
     display: 'flex',
     flexDirection: 'row',
@@ -16,8 +16,8 @@ const useStyles = makeStyles((theme) => ({
 
 
 function Console() {
+  
   const classes = useStyles();
-
   const [ date, setDate ] = useState(0);
   const [ local, setLocal ] = useState(0);
 

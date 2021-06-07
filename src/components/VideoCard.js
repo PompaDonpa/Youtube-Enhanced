@@ -1,12 +1,16 @@
 import React from 'react';
-import { Link } from 'react'
-import { makeStyles } from '@material-ui/core/styles';
+import { v4 as uuid } from 'uuid'
+import {Link} from 'react-router-dom'
+import moment from 'moment'
+import 'moment-duration-format'
 import clsx from 'clsx';
+import { makeStyles } from '@material-ui/core/styles';
 import Card from '@material-ui/core/Card';
 import CardHeader from '@material-ui/core/CardHeader';
 import CardMedia from '@material-ui/core/CardMedia';
 import CardContent from '@material-ui/core/CardContent';
 import CardActions from '@material-ui/core/CardActions';
+import CardActionArea from '@material-ui/core/CardActionArea';
 import Collapse from '@material-ui/core/Collapse';
 import Avatar from '@material-ui/core/Avatar';
 import IconButton from '@material-ui/core/IconButton';
@@ -17,8 +21,7 @@ import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import ThumbUpAltIcon from '@material-ui/icons/ThumbUpAlt';
 import ThumbDownIcon from '@material-ui/icons/ThumbDown';
 import VisibilityIcon from '@material-ui/icons/Visibility';
-import moment from 'moment'
-import 'moment-duration-format'
+
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -27,8 +30,11 @@ const useStyles = makeStyles((theme) => ({
     padding: theme.spacing(2),
     margin: theme.spacing(1),
     backgroundColor: '#6272a4',
-  },title:{
+
+  },
+  title:{
     textTransform: 'capitalize',
+
   },
   media: {
     height: 0,
@@ -68,7 +74,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const VideoCard = ({list, duration}) => {
+const VideoCard = ({list, duration, watch, videoId}) => {
   const classes = useStyles();
   const [expanded, setExpanded] = React.useState(false);
 
@@ -84,25 +90,37 @@ const tags = tagsList.map(tag =>{ return (
 
 
   return (
-    <Card className={classes.root}>
-      <CardHeader
+    <Card className={classes.root} key={uuid()}>
+      <CardHeader 
               avatar={
                 <Avatar aria-label="recipe" className={classes.avatar}>
                  {list.snippet.title[0]}
                </Avatar>
              }
              title={   
-                   <Button component={Link} to={`/videos/${list.id}`} className={classes.title}>
+                   <Button 
+                          onClick={()=>watch(list.id)} 
+                          className={classes.title} 
+                          component={Link} to={`/videos/${videoId}`}
+                          underline="none">
                        {list.snippet.title}
                     </Button>
              }  
              subheader={moment(list.snippet.publishedAt).format('MMMM Do YYYY, h:mm:ss a')}
       />
+      
+      <CardActionArea onClick={()=>watch(list.id)}>
       <CardMedia 
+            component={Link} 
+            to={`/videos/${videoId}`}
+            underline="hover"
+
             className={classes.media}
             image={list.snippet.thumbnails.high.url} 
             title={list.snippet.title}
       />
+      </CardActionArea>
+
           <Typography variant='span' className={ duration === 'LIVE' ? classes.statDurationLive : classes.statDuration } >
              &emsp;{duration}&emsp;
           </Typography>

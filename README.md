@@ -1,27 +1,30 @@
-# Material-UI
+# Youtube with Material-UI
 
-This is a quick guide of how to start a `react` app using `Material-UI` which is an open-source, front-end framework.
+This is a quick guide of how to start a `react` app using `Material-UI` open-source, front-end framework.
 
-### Case Study - Youtube Enhanced
+<br />
+
+### Case Study - Youtube Enhanced on MacBook
+<br />
 
   - Create a React app
-  -   ```bash
+   ```bash
       npx create-react-app youtube-enhanced
       cd youtube-enhanced/
       git init
-      ```
+   ```
   - Install imagemagick for MacBook - Big Sur 
-  -  ```bash
-     brew install imagemagick
+   ```bash
+      brew install imagemagick
          
-     "ImageMagick depends on Ghostscript fonts. To install them type : "
+      "ImageMagick depends on Ghostscript fonts. To install them type : "
          
-     brew install ghostscript
-     ````
+      brew install ghostscript
+   ````
   - Add the Font link to the html page ./public
-  -  ```javascript
-     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" />
-     ```
+    ```javascript
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" />
+    ```
   -   Create the Icons for the App, Android and iOS friendly.
        -  Using a third party site that provides the SVG file
           -  use magick convert the SVG file to ICO with name favicon.ico
@@ -34,45 +37,53 @@ This is a quick guide of how to start a `react` app using `Material-UI` which is
 
    - Push the Changes from terminal to GitHub
       - Add & commit locally
-      - ```bash
-         git add
-         echo >> "/node_modules" .gitnignore
-         git commit -m "First commit"
+        ```bash
+           git add
+           echo >> "/node_modules" .gitnignore
+           git commit -m "First commit"
         ```
-      - On Github, create a new repository
-   
+      - On Github, create a new repository, & add upstream
+         ```bash
+            git checkout main
+            git remote -v
+            git remote add upstream 'insert repo'
+            git remote -v
+            git pull upstream main
+         ```
+   <br />
+
   - Install dependency [Material-UI](https://material-ui.com/getting-started/installation/)
-      -  ```bash
+      ```bash
          npm i @material-ui/core
          npm i @material-ui/icons
-         ```
+      ```
    - Install `react-router-dom`
-      -  ```bash
+      ```bash
          npm i --save react-router-dom
-         ```
+      ```
    - Install `youtube-react`
-      -  ```bash
+      ```bash
          npm i react-youtube
-         ```
+      ```
    - Install `moment`
-      -  ```bash
+      ```bash
          npm i --save moment react-moment
          npm install moment-duration-format
-         ```
+      ```
    - Install `uuidv4`
-      -  ```bash
+      ```bash
          npm i --save uuid
-         ```
+      ```
    - Install `axios`
-      -  ```bash
+      ```bash
          npm i axios
-         ```
+      ```
    - Install `local-ip-url`
-      -  ```bash
+      ```bash
          npm install local-ip-url --save-dev
-         ```
-         ```react
+      ```
+      ```javascript
          const localIpUrl = require('local-ip-url')
          localIpUrl() // => 192.168.31.69
          localIpUrl('public', 'ipv6') // => fe80::c434:2eff:fe06:f90
-         ```
+      ```
