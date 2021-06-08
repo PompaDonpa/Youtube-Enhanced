@@ -244,5 +244,8 @@ This is a quick guide of how to start a `react` app using `Material-UI` open-sou
       ```
 ###  Happy Coding!
 <br /> 
-
- ####   [Up](#menu) &emsp;&emsp;&emsp;&emsp;[PompaDonpa](https://github.com/PompaDonpa) &emsp;&emsp;&emsp;&emsp;[LinkedIn](https://www.linkedin.com/in/dev-danielnaranjo/) &emsp;&emsp;&emsp;&emsp;[Twitter](https://twitter.com/PompaDonpa)
+<div align="center">
+  
+ ####   [Up](#menu) &emsp;&emsp;&emsp;&emsp;[PompaDonpa](https://github.com/PompaDonpa) &emsp;&emsp;&emsp;&emsp;[LinkedIn](https://www.linkedin.com/in/dev-danielnaranjo/) &emsp;&emsp;&emsp;&emsp;[Twitter](https://twitter.com/PompaDonpa) &emsp;&emsp;&emsp;&emsp;[Daniel Naranjo](https://pompadonpa.github.io/)
+  
+</div>
