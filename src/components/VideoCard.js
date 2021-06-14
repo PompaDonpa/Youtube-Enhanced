@@ -25,10 +25,10 @@ import VisibilityIcon from '@material-ui/icons/Visibility';
 
 const useStyles = makeStyles((theme) => ({
   root: {
-    maxWidth: 480,
+    width: 480,
     justifySelf: 'space-between',
-    padding: theme.spacing(2),
-    margin: theme.spacing(1),
+    padding: theme.spacing(0),
+    margin: theme.spacing(-2),
     backgroundColor: '#6272a4',
 
   },
@@ -52,6 +52,9 @@ const useStyles = makeStyles((theme) => ({
   },
   avatar: {
     backgroundColor: red[500],
+  }, 
+  content:{
+    padding: theme.spacing(3),
   },
   statDurationLive: { 
     position: 'relative',
@@ -83,7 +86,7 @@ const VideoCard = ({list, duration, watch, videoId}) => {
   };
 const tagsList = list.snippet.tags ? list.snippet.tags : []
 const tags = tagsList.map(tag =>{ return (
-  <Typography variant='subtitle2'>
+  <Typography variant='subtitle1'>
     # {tag}
   </Typography>
 )})
@@ -125,17 +128,17 @@ const tags = tagsList.map(tag =>{ return (
              &emsp;{duration}&emsp;
           </Typography>
 
-      <CardContent>
-          <Typography variant="body2" color="textSecondary" component="p">
+      <CardContent className = {classes.content}>
+          <Typography variant="subtitle1" color="textSecondary" component="p">
               <strong>Channel Title&emsp;&emsp;&emsp;</strong>&emsp;{list.snippet.channelTitle}
          </Typography>
-          <Typography variant="body2" color="textSecondary" component="p">
+          <Typography variant="subtitle1" color="textSecondary" component="p">
               <strong>Licensed content&emsp;</strong>&emsp;&emsp;{list.contentDetails.licensedContent ? 'Yes' : 'No'}
           </Typography>
-          <Typography variant="body2" color="textSecondary" component="p">
+          <Typography variant="subtitle1" color="textSecondary" component="p">
              <strong>Definition&emsp;&emsp;&emsp;&emsp;&ensp;</strong>&emsp;&emsp;{list.contentDetails.definition === 'hd' ? 'HD': '480'}
           </Typography>
-          <Typography variant="body2" color="textSecondary" component="p">
+          <Typography variant="subtitle1" color="textSecondary" component="p">
               <strong>Description&emsp;&emsp;&emsp;&ensp;</strong>&emsp; Click <span style={{fontSize:'24px'}}>⌄</span>
           </Typography>
       </CardContent>

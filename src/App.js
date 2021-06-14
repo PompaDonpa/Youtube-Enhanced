@@ -42,7 +42,7 @@ const App = () => {
         <main className='main'>
            <Switch>
               <Route exact path='/'>
-                  <Home info={info} watch={watch} videoId={''} areButtonsDisabled={areButtonsDisabled}/>
+                <Home info={info} watch={watch} videoId={''} areButtonsDisabled={areButtonsDisabled}/> 
               </Route>
           
               <Route path="/videos/:id"  render={showVideo}/>

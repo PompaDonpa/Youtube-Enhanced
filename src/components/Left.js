@@ -42,7 +42,7 @@ const useStyles = makeStyles(theme => ({
     backgroundColor: '#282936' //({ dracula }) => (dracula ? '#282936' :'#5de4c7' )
   },
   pd: {
-    padding: theme.spacing(4.3, 0, 0, 0),
+    padding: theme.spacing(2.2, 0, 0, 0),
     display: 'flex',
     flexDirection: 'column'
   },
@@ -103,24 +103,24 @@ const Left = ({info, loadInfo, areButtonsDisabled, toggleButtons}) => {
       <AppBar position='static'>
         <Toolbar className={classes.leftBar}>
               <Button component={Link} to='/' onClick={goHome}>
-                  <HomeIcon style={{ color: '#add7ff', fontSize: 34 }} />
+                  <HomeIcon style={{ color: '#add7ff', fontSize: 30 }} />
               </Button>
               <Tooltip title="Explore Most Viewed">
               <Button disabled={areButtonsDisabled[0]}>
-                  <ExploreIcon style={{ color: '#ebff87', fontSize: 34 }}  onClick={()=> window.open('https://www.microsoft.com', '_blank')}/>
+                  <ExploreIcon style={{ color: '#ebff87', fontSize: 30 }}  onClick={()=> window.open('https://www.microsoft.com', '_blank')}/>
               </Button>
               </Tooltip>
               <Button disabled={areButtonsDisabled[1]}>
-                  <AddCommentIcon style={{ color: '#00f769', fontSize: 34 }} />
+                  <AddCommentIcon style={{ color: '#00f769', fontSize: 30 }} />
               </Button>
               <Tooltip title="Save Video \ Discontinued">
               <Button disabled={areButtonsDisabled[2]}>
-                  <ArchiveIcon style={{ color: '#ea51b2', fontSize: 34 }} />
+                  <ArchiveIcon style={{ color: '#ea51b2', fontSize: 30 }} />
               </Button>
               </Tooltip>
             <div className={classes.pd}>
               <Button onClick={()=> window.open('https://github.com/PompaDonpa/Youtube-Enhanced', '_blank')}>
-                  <CodeIcon style={{ color: '#5b51ae', fontSize: 34 }} />
+                  <CodeIcon style={{ color: '#5b51ae', fontSize: 30 }} />
               </Button>
               <Button onClick={()=> window.open('https://github.com/PompaDonpa', '_blank')}>
                   <GitHubIcon style={{ color: '#83e8ff', fontSize: 30 }} />
