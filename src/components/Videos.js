@@ -18,14 +18,14 @@ const Videos = ({ id }) => {
     <div className='outerDiv'>
       <div className='videoContainer'>
           <br />
+          <div >
+              <YouTube videoId={id} opts={opts}  />
+          </div>
+          <br />
           <div className='videoBack'>
               <Button component={Link} to='/' variant='contained' color='primary'>
                   <Typography variant='h6' style={{textTransform: 'capitalize'}}>Go back</Typography>
               </Button>
-          </div>
-          <br />
-          <div >
-              <YouTube videoId={id} opts={opts}  />
           </div>
           <br />
       </div>
