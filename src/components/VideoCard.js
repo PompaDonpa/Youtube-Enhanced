@@ -84,12 +84,12 @@ const VideoCard = ({list, duration, watch, videoId}) => {
   const handleExpandClick = () => {
     setExpanded(!expanded);
   };
-const tagsList = list.snippet.tags ? list.snippet.tags : []
-const tags = tagsList.map(tag =>{ return (
-  <Typography variant='subtitle1'>
-    # {tag}
-  </Typography>
-)})
+  const tagsList = list.snippet.tags ? list.snippet.tags : []
+  const tags = tagsList.map(tag =>{ return (
+    <Typography variant='subtitle1'>
+     # {tag}
+    </Typography>
+  )})
 
 
   return (
@@ -112,7 +112,7 @@ const tags = tagsList.map(tag =>{ return (
              subheader={moment(list.snippet.publishedAt).format('MMMM Do YYYY, h:mm:ss a')}
       />
       
-      <CardActionArea onClick={()=>watch(list.id)}>
+      <CardActionArea onClick={()=>watch(list.id)} key={uuid()}>
       <CardMedia 
             component={Link} 
             to={`/videos/${videoId}`}
@@ -124,11 +124,11 @@ const tags = tagsList.map(tag =>{ return (
       />
       </CardActionArea>
 
-          <Typography variant='span' className={ duration === 'LIVE' ? classes.statDurationLive : classes.statDuration } >
+          <Typography variant='button' className={ duration === 'LIVE' ? classes.statDurationLive : classes.statDuration } >
              &emsp;{duration}&emsp;
           </Typography>
 
-      <CardContent className = {classes.content}>
+      <CardContent className = {classes.content} key={uuid()}>
           <Typography variant="subtitle1" color="textSecondary" component="p">
               <strong>Channel Title&emsp;&emsp;&emsp;</strong>&emsp;{list.snippet.channelTitle}
          </Typography>
@@ -143,7 +143,7 @@ const tags = tagsList.map(tag =>{ return (
           </Typography>
       </CardContent>
 
-      <CardActions disableSpacing>
+      <CardActions disableSpacing key={uuid()}>
           <IconButton aria-label="views">
                 <VisibilityIcon />
                 <Typography span>
@@ -175,7 +175,7 @@ const tags = tagsList.map(tag =>{ return (
       </CardActions>
 
       <Collapse in={expanded} timeout="auto" unmountOnExit>
-        <CardContent>
+        <CardContent key={uuid()}>
           <Typography paragraph>Description :</Typography>
           <Typography paragraph>
             {list.snippet.description}

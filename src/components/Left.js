@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import { v4 as uuid } from 'uuid'
 import axios from 'axios'
 import { Link } from 'react-router-dom'
 import { makeStyles } from '@material-ui/core/styles'
@@ -101,9 +102,9 @@ const Left = ({info, loadInfo, areButtonsDisabled, toggleButtons}) => {
   return (
     <div className={classes.root}>
       <AppBar position='static'>
-        <Toolbar className={classes.leftBar}>
+        <Toolbar className={classes.leftBar} key={uuid()}>
               <Button component={Link} to='/' onClick={goHome}>
-                  <HomeIcon style={{ color: '#add7ff', fontSize: 30 }} />
+                  <HomeIcon style={{ color: '#add7ff', fontSize: 30 }} key={uuid()}/>
               </Button>
               <Tooltip title="Explore Most Viewed">
               <Button disabled={areButtonsDisabled[0]}>

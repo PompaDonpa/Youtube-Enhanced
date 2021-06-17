@@ -44,7 +44,6 @@ const App = () => {
               <Route exact path='/'>
                 <Home info={info} watch={watch} videoId={''} areButtonsDisabled={areButtonsDisabled}/> 
               </Route>
-          
               <Route path="/videos/:id"  render={showVideo}/>
               <Route path="/videos/" >
                 { url && <Redirect to={`/videos/${url}`} render={showVideo} areButtonsDisabled={areButtonsDisabled}/>}
